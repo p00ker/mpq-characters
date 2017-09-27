@@ -16,30 +16,35 @@
 title: MPQ Character Dossiers
 email: oni@tetsujinlabs.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  Character Dossier Fan Site for Marvel Puzzle Quest from Demiurge Studios and D3 Go! / D3 Publisher of America
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "http://mpqcharacters.tetsujinlabs.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: tetsujinoni
 github_username:  tetsujinoni
 layout: default
 # Build settings
 markdown: kramdown
+kramdown:
+  syntax_highlighter_opts:
+    disable : true
 
 plugins:
   - jekyll-feed
 defaults:
-  -
-    scope:
+  - scope:
       path: ""
     values:
       layout: "default"
+  - scope:
+      path: ""
+      collection: characters
+    values:
+      layout: "character"
 data_dir: data
 collections:
-  character:
+  characters:
     output: true
-    permalink: pretty
+    permalink: /:collection/:path
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
