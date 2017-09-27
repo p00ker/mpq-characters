@@ -1,0 +1,7 @@
+<ul class="nav nav-sidebar">
+    {% for char in include.chars %}
+    <li class="{% if include.char == char.name and include.style == char.style %}active{% endif %}">
+        <a href="{% if 1 == 0 %}{% endif %}">{{char.name}} ({{char.style}})</a>
+    </li>
+    {% endfor %}
+</ul>
