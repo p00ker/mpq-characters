@@ -1,4 +1,4 @@
-<ul class="nav nav-sidebar">
+<ul class="{{ include.navloc }}">
     {% for char in include.chars %}
     <li class="{% if include.char == char.name and include.style == char.style %}active{% endif %}">
         {% assign character = site.characters | where: "character", char.name | where:   "style", char.style %}
