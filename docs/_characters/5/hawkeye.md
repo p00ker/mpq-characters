@@ -2,7 +2,7 @@
 character: Hawkeye
 style: Clint Barton
 ---
-Hawkeye is the AP-feeding powerhouse of countdown tiles that is both the engine and the output of the Summery 2017 infinite-reach damage combination team: CoulHawk.
+Hawkeye is the AP-feeding powerhouse of countdown tiles that is both the engine and the output of the Summery 201 infinite-reach damage combination team: CoulHawk.
 
 CoulHawk takes advantage of the automatic countdown tile creation of [Agent Coulson]({% link _characters/4/coulson.md %}) and his Super Secret Tech ability combined with Hawkeye (Clint Barton)'s Can't Seem to Miss {% include ap-purple.html %} to generate ever-increasing amounts of blue and red AP to power Full Quiver through to Out of Arrows, as well as firing Deep Breath whenever it is up and there are available blue tiles to place the countdowns. Coulson's purple and blue are conditionally useful for adjusting the board state to give you more blue tiles to play Hawkeye's cheap powers.
 
