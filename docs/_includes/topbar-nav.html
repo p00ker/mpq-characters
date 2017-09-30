@@ -1,0 +1,31 @@
+<ul class="nav navbar-nav">
+<li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></a>{% assign fives = site.data.characters  | where: "tier", "5" %}
+    {% include characters-nav.html chars=fives char=include.character style=include.style navloc='dropdown-menu'%}        
+</li>
+
+
+
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></a>
+{% assign fours = site.data.characters  | where: "tier", "4" %}
+{% include characters-nav.html chars=fours char=include.character style=include.style navloc="dropdown-menu" %}
+</li>
+
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></a>
+{% assign threes = site.data.characters  | where: "tier", "3" %}
+{% include characters-nav.html chars=threes char=include.character style=include.style navloc="dropdown-menu" %}
+</li>
+
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></a>
+{% assign twos = site.data.characters  | where: "tier", "2" %}
+{% include characters-nav.html chars=twos char=include.character style=include.style navloc="dropdown-menu" %}
+</li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-star" aria-hidden="true"></i></a>
+{% assign ones = site.data.characters  | where: "tier", "1" %}
+{% include characters-nav.html chars=ones char=include.character style=include.style navloc="dropdown-menu" %}
+</li>
+</ul>
