@@ -103,3 +103,27 @@ body {
     display: inline-block;
     border-radius: 50%;
   }
+
+  .ap-purple {
+      color: fuchsia;
+  }
+
+  .ap-red {
+      color: rgb(182, 0, 0)
+  }
+
+  .ap-blue {
+      color: #2121E6;
+  }
+
+  .ap-black {
+      color: #2e2e2e
+  }
+
+  .ap-yellow {
+    color: goldenrod;
+  }
+
+  .ap-green {
+      color: forestgreen;
+  }
