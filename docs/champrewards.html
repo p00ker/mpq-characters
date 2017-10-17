@@ -23,22 +23,28 @@ permalink: champrewards/
     <tbody>        
     </tbody>
     {% for theFour in fours %}
+    {% assign theThrees = null | compact %}
+    {% if theThrees.first %}
+    {{ theThrees.size }}
+    {% endif %}
+    {% for aThree in threes %}
+    {% if aThree.awards.name == theFour.name and aThree.awards.style == theFour.style %}
+    {% assign someThree = aThree | compact %}
+    {% assign theThrees = theThrees | concat: someThree %}
+    {% endif %}
+    {% endfor %}
+    {% assign numberOfThrees = theThrees | size %}
+    {% if numberOfThrees > 0 %}
+    {% for theThree in theThrees %}
     <tr>
-            {% assign theThree = nil %}
-            {% assign theTwo = nil %}
+        {% assign theTwo = nil %}
             
-        {% for aThree in threes %}
-            {% if aThree.awards.name == theFour.name and aThree.awards.style == theFour.style %}
-            {% assign theThree = aThree %}
-            {% endif %}
-        {% endfor %}
-        {% if theThree %}
         {% for aTwo in twos %}
         {% if aTwo.awards.name == theThree.name and aTwo.awards.style == theThree.style %}
         {% assign theTwo = aTwo %}
         {% endif %}
         {% endfor %}
-        {% endif %}
+
         {% if theTwo %}
         <td>{{ theTwo.name }} ({{theTwo.style }})</td>
         <td>{% include ap.html color=theTwo.awards.first %}</td>
@@ -47,15 +53,18 @@ permalink: champrewards/
         {% else %}
         <td colspan=4></td>
         {% endif %}
-        {% if theThree %}
         <td>{{ theThree.name }} ({{theThree.style }})</td>
         <td>{% include ap.html color=theThree.awards.first %}</td>
         <td>{% include ap.html color=theThree.awards.second %}</td>
         <td>{% include ap.html color=theThree.awards.third %}</td>
-        {% else %}
-        <td colspan=4></td>
-        {% endif%} 
         <td>{{ theFour.name }} ({{theFour.style}})</td>
     </tr>
+    {% endfor %}
+{% else %}
+    <tr>
+        <td colspan=8></td>
+        <td>{{ theFour.name }} ({{theFour.style}})</td>
+    </tr>
+    {% endif %}
 {% endfor %}    
 </table>
