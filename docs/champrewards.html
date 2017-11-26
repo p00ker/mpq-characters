@@ -2,7 +2,7 @@
 permalink: champrewards/
 ---
 
-
+{% assign fives = site.data.characters | where: "tier", "5" %}
 {% assign fours = site.data.characters | where: "tier", "4" %}
 {% assign threes = site.data.characters | where: "tier", "3" %}
 {% assign twos = site.data.characters | where: "tier", "2" %}
@@ -18,23 +18,27 @@ permalink: champrewards/
             <td>223</td>
             <td>265</td>
             <td>Four Star</td>
+            <td>280<br>340</td>
+            <td>300<br>350</td>
+            <td>320<br>360</td>
+            <td>Five Star</td>
         </tr>
     </thead>
     <tbody>        
     </tbody>
-    {% for theFour in fours %}
-    {% assign theThrees = null | compact %}
-    {% if theThrees.first %}
+{% for theFour in fours %}
+{% assign theThrees = null | compact %}
+{% if theThrees.first %}
     {{ theThrees.size }}
-    {% endif %}
-    {% for aThree in threes %}
+{% endif %}
+{% for aThree in threes %}
     {% if aThree.awards.name == theFour.name and aThree.awards.style == theFour.style %}
-    {% assign someThree = aThree | compact %}
-    {% assign theThrees = theThrees | concat: someThree %}
+        {% assign someThree = aThree | compact %}
+        {% assign theThrees = theThrees | concat: someThree %}
     {% endif %}
-    {% endfor %}
-    {% assign numberOfThrees = theThrees | size %}
-    {% if numberOfThrees > 0 %}
+{% endfor %}
+{% assign numberOfThrees = theThrees | size %}
+{% if numberOfThrees > 0 %}
     {% for theThree in theThrees %}
     <tr>
         {% assign theTwo = nil %}
@@ -58,13 +62,37 @@ permalink: champrewards/
         <td>{% include ap.html color=theThree.awards.second %}</td>
         <td>{% include ap.html color=theThree.awards.third %}</td>
         <td>{{ theFour.name }} ({{theFour.style}})</td>
+{% if theFour.awards.name != nil %}
+{% for theFive in fives %}
+{% if theFive.name == theFour.awards.name and theFive.style == theFour.awards.style %}
+        <td>{% include ap.html color=theFour.awards.first %}</td>
+        <td>{% include ap.html color=theFour.awards.second %}</td>
+        <td>{% include ap.html color=theFour.awards.third %}</td>
+        <td>{{theFive.name}} ({{theFive.style}})</td>
+{% endif %}
+{% endfor %}
+{% else %}
+        <td colspan=4>Legendary Tokens</td>
+{% endif %}
     </tr>
     {% endfor %}
 {% else %}
     <tr>
         <td colspan=8></td>
         <td>{{ theFour.name }} ({{theFour.style}})</td>
-    </tr>
+        {% if theFour.awards.name != nil %}
+        {% for theFive in fives %}
+        {% if theFive.name == theFour.awards.name and theFive.style == theFour.awards.style %}
+                <td>{% include ap.html color=theFour.awards.first %}</td>
+                <td>{% include ap.html color=theFour.awards.second %}</td>
+                <td>{% include ap.html color=theFour.awards.third %}</td>
+                <td>{{theFive.name}} ({{theFive.style}})</td>
+        {% endif %}
+        {% endfor %}
+        {% else %}
+                <td colspan=4>Legendary Tokens</td>
+        {% endif %}
+       </tr>
     {% endif %}
 {% endfor %}    
 </table>

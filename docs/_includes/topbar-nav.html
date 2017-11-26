@@ -1,4 +1,6 @@
 <ul class="nav navbar-nav">
+    
+    <li><a href="/champrewards">Champion Rewards</a></li>
 <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></a>{% assign fives = site.data.characters  | where: "tier", "5" %}
     {% include characters-nav.html chars=fives char=include.character style=include.style navloc='dropdown-menu'%}        
