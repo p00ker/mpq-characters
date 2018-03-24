@@ -1,4 +1,5 @@
 ---
+layout: default
 ---
 ## Marvel Puzzle Quest Character Dossiers
 

@@ -41,9 +41,30 @@
             <div class="col-sm-3 col-md-2 sidebar">
                 {% include sidebar-nav.html character=page.character style=page.style %}
             </div>
-            <!-- <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            
+            <!-- defines thisPage using the data file characters.json for ease -->
+            {% for aCharacter in site.data.characters %}
+                    {% if page.character == aCharacter.name and page.style == aCharacter.style %}
+                        {% assign thisPage = aCharacter %}
+                    {% endif %}
+                    {% if thisPage.awards.name %}
+                        {% assign awardsFirst = "/images/" | append: thisPage.awards.first | append: "_w.png" %}
+                        {% assign awardsSecond = "/images/" | append: thisPage.awards.second | append: "_w.png" %}
+                        {% assign awardsThird = "/images/" | append: thisPage.awards.third | append: "_w.png" %}
+                    {% endif%}
+                    {% if page.character == aCharacter.awards.name and page.style == aCharacter.awards.style %}
+                        {% assign feeder = aCharacter %}
+                        {% assign feederFirst = "/images/" | append: feeder.awards.first | append: "_w.png" %}
+                        {% assign feederSecond = "/images/" | append: feeder.awards.second | append: "_w.png" %}
+                        {% assign feederThird = "/images/" | append: feeder.awards.third | append: "_w.png" %}
+                    {% endif %}
+            {% endfor %}
+            {% assign firstColor = "/images/" | append: thisPage.colors.first | append: "_w.png"%}
+            {% assign secondColor = "/images/" | append: thisPage.colors.second | append: "_w.png"%}
+            {% assign thirdColor = "/images/" | append: thisPage.colors.third | append: "_w.png"%}
+
  
-                {{content}} -->
+                
             <!-- I'm using a bunch of pixel definitions, not sure how to define things vertically with bootstrap yet -->
             <style>
                 .mainHeader{
@@ -81,6 +102,10 @@
                     padding: 2px 0px;
                     width: 26px;
                 }
+                .inTextImage{
+                    display: inline-block;
+                    width: 20px;
+                }
                 .starRating{
                     float: right !important;
                     padding: 20px;
@@ -94,11 +119,12 @@
             <!-- This is functional but I am not sure why it work once the navbar disappears -->
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 blackTop" >
                 
-                <!-- TODO automate color selection -->
                 <div class="imagebox">
-                    <img class="imageBoxImage" src="/images/purple_w.png" >
-                    <img class="imageBoxImage" src="/images/purple_w.png">
-                    <img class="imageBoxImage" src="/images/purple_w.png">
+                    <img class="imageBoxImage" src="{{firstColor}}" >
+                    <img class="imageBoxImage" src="{{secondColor}}">
+                    {% if thisPage.colors.third %}
+                        <img class="imageBoxImage" src="{{thirdColor}}">
+                    {% endif %}
                 </div>
                 
                 <div class="mainHeader">
@@ -110,22 +136,37 @@
                     </p>
                 </div>
                 <div class="starRating">
-                        <!-- Not sure that I can make JS work based on a jekyll(?) function call to get rarity-->
-                        
-                        <script>
-                            for (i = 0; i < /*TODO*/5; i++){
-                                document.write("<i class='fa fa-star'></i>");
-                            }
-
-
-                        </script>
-                         
+                    {% for i in (1..thisPage.tier) %}    
+                         <i class='fa fa-star'></i>
+                    {% endfor %}
                 </div>
                 
 
 
             </div>
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="background-color:rgb(210, 214, 194)">
+                
+                <!-- Create links for feedrs and awards. As written, this requires the names of the files to match (name)-(style).md -->
+                {% if feeder %}
+                    
+                    {% assign feederURL = "/characters/" | append: feeder.tier | append: "/" | append: feeder.name | append: "-" | append: feeder.style | downcase %}
+                    <p>{{thisPage.name}}({{thisPage.style}}) is fed by 
+                        <a href="{{feederURL}}">{{feeder.name}}({{feeder.style}})</a> (order:<img class="inTextImage" src="{{feederFirst}}"><img class="inTextImage" src="{{feederSecond}}"><img class="inTextImage" src="{{feederThird}}">)
+                        
+                    </p>
+                {% else %}
+                    <p>Nothing feeds {{thisPage.name}}({{thisPage.style}})</p>
+                {% endif %}
+
+                {% if thisPage.awards.name %}
+                    {% assign awardTier = thisPage.tier | plus: 1 %}
+                    {% assign awardURL = "/characters/" | append: awardTier | append: "/" | append: thisPage.awards.name | append: "-" | append: thisPage.awards.style | downcase %}
+                    <p>{{thisPage.name}}({{thisPage.style}}) gives <a href="{{awardURL}}"> {{thisPage.awards.name}}({{thisPage.awards.style}})</a> (order:<img class="inTextImage" src="{{awardsFirst}}"><img class="inTextImage" src="{{awardsSecond}}"><img class="inTextImage" src="{{awardsThird}}">)</p>
+                {% else %}
+                    <p>{{thisPage.name}}({{thisPage.style}}) is not a feeder</p>
+                {% endif %}
+                
+                <!-- content found in (character.md) -->
                 {{content}}
             </div>
         </div>
