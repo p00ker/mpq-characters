@@ -1,0 +1,4 @@
+---
+character: Psylocke
+style: Classic
+---

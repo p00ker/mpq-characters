@@ -1,0 +1,4 @@
+---
+character: Colossus
+style: Classic
+---

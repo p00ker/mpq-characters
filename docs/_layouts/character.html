@@ -150,20 +150,20 @@
                 {% if feeder %}
                     
                     {% assign feederURL = "/characters/" | append: feeder.tier | append: "/" | append: feeder.name | append: "-" | append: feeder.style | downcase %}
-                    <p>{{thisPage.name}}({{thisPage.style}}) is fed by 
-                        <a href="{{feederURL}}">{{feeder.name}}({{feeder.style}})</a> (order:<img class="inTextImage" src="{{feederFirst}}"><img class="inTextImage" src="{{feederSecond}}"><img class="inTextImage" src="{{feederThird}}">)
+                    <p>{{thisPage.name}} ({{thisPage.style}}) is fed by 
+                        <a href="{{feederURL}}">{{feeder.name}} ({{feeder.style}})</a> (order:<img class="inTextImage" src="{{feederFirst}}"><img class="inTextImage" src="{{feederSecond}}"><img class="inTextImage" src="{{feederThird}}">)
                         
                     </p>
                 {% else %}
-                    <p>Nothing feeds {{thisPage.name}}({{thisPage.style}})</p>
+                    <p>Nothing feeds {{thisPage.name}} ({{thisPage.style}})</p>
                 {% endif %}
 
                 {% if thisPage.awards.name %}
                     {% assign awardTier = thisPage.tier | plus: 1 %}
                     {% assign awardURL = "/characters/" | append: awardTier | append: "/" | append: thisPage.awards.name | append: "-" | append: thisPage.awards.style | downcase %}
-                    <p>{{thisPage.name}}({{thisPage.style}}) gives <a href="{{awardURL}}"> {{thisPage.awards.name}}({{thisPage.awards.style}})</a> (order:<img class="inTextImage" src="{{awardsFirst}}"><img class="inTextImage" src="{{awardsSecond}}"><img class="inTextImage" src="{{awardsThird}}">)</p>
+                    <p>{{thisPage.name}} ({{thisPage.style}}) gives <a href="{{awardURL}}"> {{thisPage.awards.name}} ({{thisPage.awards.style}})</a> (order:<img class="inTextImage" src="{{awardsFirst}}"><img class="inTextImage" src="{{awardsSecond}}"><img class="inTextImage" src="{{awardsThird}}">)</p>
                 {% else %}
-                    <p>{{thisPage.name}}({{thisPage.style}}) is not a feeder</p>
+                    <p>{{thisPage.name}} ({{thisPage.style}}) is not a feeder</p>
                 {% endif %}
                 
                 <!-- content found in (character.md) -->

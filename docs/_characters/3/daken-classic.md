@@ -1,0 +1,4 @@
+---
+character: Daken
+style: Classic
+---

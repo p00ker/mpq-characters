@@ -2,7 +2,7 @@
 character: Storm
 style: Modern
 ---
-Refer to: [Juggernaut (Classic)]({% link _characters/1/juggernaut.md %})
+Refer to: [Juggernaut (Classic)]({% link _characters/1/juggernaut-classic.md %})
 
 Tier: Mid -- Suggested Build: {% include ap.html color='green' %}5/{% include ap.html color='yellow' %}3/{% include ap.html color='black' %}5 or {% include ap.html color='green' %}5/{% include ap.html color='yellow' %}5/{% include ap.html color='black' %}3
 

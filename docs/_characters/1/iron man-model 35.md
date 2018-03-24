@@ -1,0 +1,15 @@
+---
+character: Iron Man
+style: Model 35
+---
+Refer to: [Juggernaut (Classic)]({% link _characters/1/juggernaut-classic.md %})
+
+Tier: High -- Suggested Build: {% include ap.html color='red' %}5/{% include ap.html color='yellow' %}5/{% include ap.html color='blue' %}3
+
+Iron Man is not a terrible choice for your 1* character, and it may not be worth dropping him to develop a Juggernaut if you already have him developed. Iron Man is also not a big, ugly Dark Avenger.
+
+{% include ap.html color='red' %} Repulsor Blast does damage. It also doesn't hurt your own character.
+
+{% include ap.html color='yellow' %} Armored Assault does less damage and creates a few (up to 4) protect tiles.
+
+{% include ap.html color='blue' %} Ultra-Freon Beam does a lot of damage and stuns its target, for up to 3 turns. It also costs 19, so you probably will almost never find a use for this.

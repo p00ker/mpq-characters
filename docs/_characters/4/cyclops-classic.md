@@ -1,0 +1,4 @@
+---
+character: Cyclops
+style: Classic
+---

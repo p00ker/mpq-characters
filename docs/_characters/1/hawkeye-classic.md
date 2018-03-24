@@ -2,7 +2,7 @@
 character: Hawkeye
 style: Classic
 ---
-Refer to: [Juggernaut (Classic)]({% link _characters/1/juggernaut.md %})
+Refer to: [Juggernaut (Classic)]({% link _characters/1/juggernaut-classic.md %})
 
 Tier: Mid -- Suggested Build: {% include ap.html color='purple' %}5/{% include ap.html color='red' %}5
 

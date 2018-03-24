@@ -1,0 +1,4 @@
+---
+character: Elektra
+style: Assassin
+---

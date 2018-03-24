@@ -34,7 +34,7 @@
     { "tier": 4, "name": "Ghost Rider", "style": "Johnny Blaze", "colors": {"first": "green", "second": "red", "third": "black"} },
     { "tier": 4, "name": "Gwenpool", "style": "Gwen Poole", "colors": {"first": "purple", "second": "black", "third": "green"} },
     { "tier": 4, "name": "Howard the Duck", "style": "Howard, A Duck", "colors": {"first": "green", "second": "blue", "third": "purple"} },    
-    { "tier": 4, "name": "Iceman", "style": "All New X-Men", "colors": {"first": "green", "second": "blue", "third": "purple"} },
+    { "tier": 4, "name": "Iceman", "style": "All-New X-Men", "colors": {"first": "green", "second": "blue", "third": "purple"} },
     { "tier": 4, "name": "Invisible Woman", "style": "Classic", "colors": {"first": "yellow", "second": "blue", "third": "green"} },
     { "tier": 4, "name": "Iron Fist", "style": "Danny Rand" , "colors": {"first": "blue", "second": "green", "third": "black"} },
     { "tier": 4, "name": "Iron Man", "style": "Hulkbuster", "colors": {"first": "red", "second": "black", "third": "blue"} },
