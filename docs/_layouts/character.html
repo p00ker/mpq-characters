@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content=""> {% include favicon.html %}
-    <title>{{page.title}}</title>
+    <title>MPQD: {{page.character}} ({{page.style}})</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -35,15 +35,98 @@
         </div>
     </nav>
 
+    <!-- TODO put my stuff in -->
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar">
                 {% include sidebar-nav.html character=page.character style=page.style %}
             </div>
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <!-- <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
  
-                {{content}}
+                {{content}} -->
+            <!-- I'm using a bunch of pixel definitions, not sure how to define things vertically with bootstrap yet -->
+            <style>
+                .mainHeader{
+                    
+                    display: inline-block;
+
+                }
+                .blackTop{
+                    background-color:black;
+                    color:white;
+                    padding: 0px;
+                    
+                }
+                .charName{
+                    color: white;
+                    font-size: 50px;
+                    display: block;
+
+                }
+                .charStyle{
+                    color: lightblue;
+                    font-size: 15px;
+                    display: block;
+                    text-align: right;
+                }
+                .imagebox{
+                    height: 80px;
+                    width: 40px;
+                    display: inline-block;
+                    ;
+                    
+                }
+                .imageBoxImage{
+                    display: block;
+                    padding: 2px 0px;
+                    width: 26px;
+                }
+                .starRating{
+                    float: right !important;
+                    padding: 20px;
+
+                }
                 
+
+            
+            </style> 
+        
+            <!-- This is functional but I am not sure why it work once the navbar disappears -->
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 blackTop" >
+                
+                <!-- TODO automate color selection -->
+                <div class="imagebox">
+                    <img class="imageBoxImage" src="/images/purple_w.png" >
+                    <img class="imageBoxImage" src="/images/purple_w.png">
+                    <img class="imageBoxImage" src="/images/purple_w.png">
+                </div>
+                
+                <div class="mainHeader">
+                    <h1 class="charName">
+                        {{page.character}}
+                    </h1>
+                    <p class="charStyle">
+                        {{page.style}}
+                    </p>
+                </div>
+                <div class="starRating">
+                        <!-- Not sure that I can make JS work based on a jekyll(?) function call to get rarity-->
+                        
+                        <script>
+                            for (i = 0; i < /*TODO*/5; i++){
+                                document.write("<i class='fa fa-star'></i>");
+                            }
+
+
+                        </script>
+                         
+                </div>
+                
+
+
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+                {{content}}
             </div>
         </div>
     </div>
