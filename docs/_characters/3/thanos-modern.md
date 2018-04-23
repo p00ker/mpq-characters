@@ -1,4 +1,0 @@
----
-character: Thanos
-style: Modern
----

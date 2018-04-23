@@ -1,4 +1,0 @@
----
-character: Hawkeye
-style: Modern
----

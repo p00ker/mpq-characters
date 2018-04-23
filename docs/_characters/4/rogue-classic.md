@@ -1,4 +1,0 @@
----
-character: Rogue
-style: Classic
----

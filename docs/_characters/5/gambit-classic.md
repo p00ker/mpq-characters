@@ -1,4 +1,0 @@
----
-character: Gambit
-style: Classic
----

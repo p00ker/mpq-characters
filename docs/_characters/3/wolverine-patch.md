@@ -1,4 +1,0 @@
----
-character: Wolverine
-style: Patch
----

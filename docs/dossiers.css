@@ -127,3 +127,14 @@ body {
   .ap-green {
       color: forestgreen;
   }
+
+  .wedge-medium {
+      display: block;
+      padding: 2px 0px;
+      width: 26px;
+  }
+  
+  .wedge-small {
+      display: inline-block;
+      width: 20px;
+  }

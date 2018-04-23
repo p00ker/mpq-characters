@@ -1,4 +1,0 @@
----
-character: Beast
-style: Classic
----

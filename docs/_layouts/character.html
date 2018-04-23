@@ -44,26 +44,21 @@
             
             <!-- defines thisPage using the data file characters.json for ease -->
             {% for aCharacter in site.data.characters %}
-                    {% if page.character == aCharacter.name and page.style == aCharacter.style %}
-                        {% assign thisPage = aCharacter %}
-                    {% endif %}
-                    {% if thisPage.awards.name %}
-                        {% assign awardsFirst = "/images/" | append: thisPage.awards.first | append: "_w.png" %}
-                        {% assign awardsSecond = "/images/" | append: thisPage.awards.second | append: "_w.png" %}
-                        {% assign awardsThird = "/images/" | append: thisPage.awards.third | append: "_w.png" %}
-                    {% endif%}
-                    {% if page.character == aCharacter.awards.name and page.style == aCharacter.awards.style %}
-                        {% assign feeder = aCharacter %}
-                        {% assign feederFirst = "/images/" | append: feeder.awards.first | append: "_w.png" %}
-                        {% assign feederSecond = "/images/" | append: feeder.awards.second | append: "_w.png" %}
-                        {% assign feederThird = "/images/" | append: feeder.awards.third | append: "_w.png" %}
-                    {% endif %}
+                {% if page.character == aCharacter.name and page.style == aCharacter.style %}
+                    {% assign thisPage = aCharacter %}
+                {% endif %}
+                {% if page.character == aCharacter.awards.name and page.style == aCharacter.awards.style %}
+                    {% assign feeder = aCharacter %}
+                {% endif %}
             {% endfor %}
-            {% assign firstColor = "/images/" | append: thisPage.colors.first | append: "_w.png"%}
-            {% assign secondColor = "/images/" | append: thisPage.colors.second | append: "_w.png"%}
-            {% assign thirdColor = "/images/" | append: thisPage.colors.third | append: "_w.png"%}
+            {% if thisPage.awards.name %}
+                {% for aCharacter in site.data.characters %}
+                    {% if thisPage.awards.name == aCharacter.name and thisPage.awards.style == aCharacter.style %}
+                        {% assign champAwards = aCharacter %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
 
- 
                 
             <!-- I'm using a bunch of pixel definitions, not sure how to define things vertically with bootstrap yet -->
             <style>
@@ -116,14 +111,14 @@
             
             </style> 
         
-            <!-- This is functional but I am not sure why it work once the navbar disappears -->
+            <!-- This is functional, but I am not sure why it work once the navbar disappears -->
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 blackTop" >
                 
                 <div class="imagebox">
-                    <img class="imageBoxImage" src="{{firstColor}}" >
-                    <img class="imageBoxImage" src="{{secondColor}}">
+                    {% include mWedge.html color = thisPage.colors.first %}
+                    {% include mWedge.html color = thisPage.colors.second %}
                     {% if thisPage.colors.third %}
-                        <img class="imageBoxImage" src="{{thirdColor}}">
+                        {% include mWedge.html color = thisPage.colors.third %}
                     {% endif %}
                 </div>
                 
@@ -146,26 +141,27 @@
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="background-color:rgb(210, 214, 194)">
                 
-                <!-- Create links for feedrs and awards. As written, this requires the names of the files to match (name)-(style).md -->
+                <!-- Create links for feeders and awards. ugly URLs are hidden by listing a permalink in the character page -->
+                
                 {% if feeder %}
-                    
-                    {% assign feederURL = "/characters/" | append: feeder.tier | append: "/" | append: feeder.name | append: "-" | append: feeder.style | downcase %}
+                    {% assign feederURL = "/" | append: feeder.nick | append: "/" %}
                     <p>{{thisPage.name}} ({{thisPage.style}}) is fed by 
-                        <a href="{{feederURL}}">{{feeder.name}} ({{feeder.style}})</a> (order:<img class="inTextImage" src="{{feederFirst}}"><img class="inTextImage" src="{{feederSecond}}"><img class="inTextImage" src="{{feederThird}}">)
-                        
+                        <a href="{{feederURL}}">{{feeder.name}} ({{feeder.style}})</a> (order: {% include sWedge.html color = feeder.awards.first %}{% include sWedge.html color = feeder.awards.second %}{% include sWedge.html color = feeder.awards.third %})
                     </p>
                 {% else %}
                     <p>Nothing feeds {{thisPage.name}} ({{thisPage.style}})</p>
                 {% endif %}
-
-                {% if thisPage.awards.name %}
-                    {% assign awardTier = thisPage.tier | plus: 1 %}
-                    {% assign awardURL = "/characters/" | append: awardTier | append: "/" | append: thisPage.awards.name | append: "-" | append: thisPage.awards.style | downcase %}
-                    <p>{{thisPage.name}} ({{thisPage.style}}) gives <a href="{{awardURL}}"> {{thisPage.awards.name}} ({{thisPage.awards.style}})</a> (order:<img class="inTextImage" src="{{awardsFirst}}"><img class="inTextImage" src="{{awardsSecond}}"><img class="inTextImage" src="{{awardsThird}}">)</p>
+                
+                {% if champAwards.name %}
+                    {% assign awardsURL = "/" | append: champAwards.nick | append: "/" %}
+                    <p>{{thisPage.name}} ({{thisPage.style}}) gives <a href="{{awardsURL}}"> {{thisPage.awards.name}} ({{thisPage.awards.style}})</a> (order: {% include sWedge.html color = thisPage.awards.first %}{% include sWedge.html color = thisPage.awards.second %}{% include sWedge.html color = thisPage.awards.third %})</p>
                 {% else %}
                     <p>{{thisPage.name}} ({{thisPage.style}}) is not a feeder</p>
                 {% endif %}
                 
+                
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="background-color: white">
                 <!-- content found in (character.md) -->
                 {{content}}
             </div>

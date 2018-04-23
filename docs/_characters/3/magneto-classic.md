@@ -1,4 +1,0 @@
----
-character: Magneto
-style: Classic
----

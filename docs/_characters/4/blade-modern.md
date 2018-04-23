@@ -1,4 +1,0 @@
----
-character: Blade
-style: Modern
----
